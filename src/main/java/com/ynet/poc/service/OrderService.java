@@ -1,5 +1,6 @@
 package com.ynet.poc.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -82,7 +83,9 @@ public class OrderService extends ServiceImpl<OrderMapper, OrderInfo> {
     }
 
     public OrderInfo getOrderInfo(String orderId) {
-        return this.getById(orderId);
+        QueryWrapper<OrderInfo> wrapper = new QueryWrapper<>();
+        wrapper.eq("tti_flow_id", orderId);
+        return this.getOne(wrapper);
     }
 
     public List<OrderInfo> getOrderList(int userId) {

@@ -23,9 +23,9 @@ public class AuthInterceptor implements HandlerInterceptor {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=utf-8");
         String token = request.getHeader("token");
-        log.info(token);
         if (StringUtils.isEmpty(token)) {
             token = request.getParameter("token");
+            log.info(token);
             if (StringUtils.isEmpty(token))
                 throw new YNETException("300", "用户未登录");
         }

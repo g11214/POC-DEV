@@ -5,6 +5,7 @@ import com.ynet.poc.entity.MerStateInfo;
 import com.ynet.poc.mapper.MerStateMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  */
 @Service
 @Slf4j
+@Transactional
 public class MerStateService extends ServiceImpl<MerStateMapper, MerStateInfo> {
     /**
      * @Description: 插入订单商品状态

@@ -34,6 +34,7 @@ public class CartService extends ServiceImpl<CartMapper, CartInfo> {
     public void addCartInfo(CartInfo cartInfo) {
         //判断商品是否已在购物车中
         int count = getCartCount(cartInfo.getUserId(), cartInfo.getMerId());
+        log.info("库存数量为："+count);
         if (count != 0) {//在购物车中，增加商品的数量
             updateMerCount(cartInfo.getUserId(), cartInfo.getMerId(), count + cartInfo.getMerCount());
         } else {//不在，则新增
@@ -51,7 +52,7 @@ public class CartService extends ServiceImpl<CartMapper, CartInfo> {
     public int getCartCount(int userId, int merId) {
         QueryWrapper<CartInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("tci_user_id", userId).eq("tci_mer_id", merId);
-        return this.count(wrapper);
+        return this.getOne(wrapper).getMerCount();
     }
 
     public void updateMerCount(int cartId, int merCount) {

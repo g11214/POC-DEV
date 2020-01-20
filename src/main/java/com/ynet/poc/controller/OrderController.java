@@ -29,10 +29,12 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @PutMapping("/addOrderInfo")
+    @PostMapping("/addOrderInfo")
     @ApiOperation("新增订单信息")
 
-    public ResponseVo addOrderInfo(@RequestBody List<CartInfo> cartInfos, int addrId, HttpServletRequest request) {
+    public ResponseVo addOrderInfo(@RequestBody List<CartInfo> cartInfos,
+                                   @RequestParam int addrId,
+                                   HttpServletRequest request) {
         int userId = (int) request.getAttribute("userId");
         log.info(Arrays.toString(cartInfos.toArray()));
         String orderId = orderService.addOrderInfo(cartInfos, userId, addrId);

@@ -83,9 +83,7 @@ public class OrderService extends ServiceImpl<OrderMapper, OrderInfo> {
     }
 
     public OrderInfo getOrderInfo(String orderId) {
-        QueryWrapper<OrderInfo> wrapper = new QueryWrapper<>();
-        wrapper.eq("tti_flow_id", orderId);
-        return this.getOne(wrapper);
+        return this.baseMapper.orderInfoById(orderId);
     }
 
     public List<OrderInfo> getOrderList(int userId) {

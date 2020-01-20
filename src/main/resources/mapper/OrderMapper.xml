@@ -43,5 +43,25 @@
                  left join trade_mapping_info on tti_flow_id = tmi_trans_flow_id
         where tti_user_id = #{userId}
     </select>
+    <select id="orderInfoById" resultMap="orderResultMap">
+        SELECT tti_flow_id,
+               tti_user_id,
+               tti_stt,
+               tti_expense,
+               tti_addr_id,
+               tti_create_time,
+               tmi_mer_id,
+               tmi_trans_flow_id,
+               tmi_user_id,
+               tmi_name,
+               tmi_desc,
+               tmi_count,
+               tmi_expense,
+               tmi_stt,
+               tmi_cover
+        FROM trade_trans_info
+                 left join trade_mapping_info on tti_flow_id = tmi_trans_flow_id
+        where tti_flow_id = #{orderId}
+    </select>
 </mapper>
 

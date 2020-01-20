@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface OrderMapper extends BaseMapper<OrderInfo> {
     List<OrderInfo> orderList(@Param("userId") int userId);
+
+    OrderInfo orderInfoById(@Param("orderId") String orderId);
 }

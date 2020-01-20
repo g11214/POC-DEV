@@ -6,6 +6,7 @@ import com.ynet.poc.service.LoginService;
 import com.ynet.poc.service.ProducerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 @Api(value = "登录api接口")
+@Slf4j
 public class LoginController {
 
     LoginService loginService;

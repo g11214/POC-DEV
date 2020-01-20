@@ -47,13 +47,6 @@ spring:
         login-username: admin
         login-password: 123456
         enabled: true
-      filter:
-        slf4j:
-          enabled: true
-          statement-create-after-log-enabled: true
-          statement-close-after-log-enabled: true
-          result-set-open-after-log-enabled: true
-          result-set-close-after-log-enabled: true
 
 #mybatis-plus
 mybatis-plus:
@@ -94,5 +87,4 @@ ynet:
   auth:
     secret: 8f173b072791424f86f8ea54dc6dc64e
     expire-time: 1
-
-
+debug: false

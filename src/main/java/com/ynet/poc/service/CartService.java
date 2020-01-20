@@ -51,7 +51,7 @@ public class CartService extends ServiceImpl<CartMapper, CartInfo> {
     public int getCartCount(int userId, int merId) {
         QueryWrapper<CartInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("tci_user_id", userId).eq("tci_mer_id", merId);
-        return this.count();
+        return this.count(wrapper);
     }
 
     public void updateMerCount(int cartId, int merCount) {

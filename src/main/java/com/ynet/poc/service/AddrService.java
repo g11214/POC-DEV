@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ynet.poc.entity.AddrInfo;
 import com.ynet.poc.exception.YNETException;
 import com.ynet.poc.mapper.AddrMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * @version: $
  */
 @Service
+@Slf4j
 public class AddrService extends ServiceImpl<AddrMapper, AddrInfo> {
 
     public void insertAddr(AddrInfo addrInfo) {

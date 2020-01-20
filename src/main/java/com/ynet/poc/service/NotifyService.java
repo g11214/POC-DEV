@@ -1,5 +1,6 @@
 package com.ynet.poc.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
  * @version: $
  */
 @Service
+@Slf4j
 public class NotifyService {
     @Autowired
     OrderService orderService;

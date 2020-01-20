@@ -66,16 +66,6 @@ public class OrderService extends ServiceImpl<OrderMapper, OrderInfo> {
         log.info(orderInfo.toString());
         this.save(orderInfo);
 
-        //模拟收单回调
-        MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap<>();
-        multiValueMap.add("reCode", "AA");
-        multiValueMap.add("reMsg", "支付成功");
-        multiValueMap.add("stt", "90");
-        multiValueMap.add("orderFlowNo", orderId);
-        multiValueMap.add("createTime", new Date().toString());
-        multiValueMap.add("bsnCode", "payCallBack");
-
-        HttpClient.sendPostRequest("http://localhost:8090/payNotify", multiValueMap);
         return orderId;
     }
 

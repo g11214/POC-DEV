@@ -1,0 +1,47 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ynet.poc.mapper.OrderMapper">
+    <resultMap id="orderResultMap" type="com.ynet.poc.entity.OrderInfo">
+        <id property="orderId" column="tti_flow_id"/>
+        <result property="userId" column="tti_user_id"/>
+        <result property="orderStt" column="tti_stt"/>
+        <result property="orderExpense" column="tti_expense"/>
+        <result property="orderCreateTime" column="tti_create_time"/>
+        <result property="orderAddr" column="tti_addr_id"/>
+
+        <collection property="merStateInfos" ofType="com.ynet.poc.entity.MerStateInfo">
+            <result property="merId" column="tmi_mer_id"/>
+            <result property="userId" column="tmi_user_id"/>
+            <result property="orderId" column="tmi_trans_flow_id"/>
+            <result property="merName" column="tmi_name"/>
+            <result property="merDesc" column="tmi_desc"/>
+            <result property="merCount" column="tmi_count"/>
+            <result property="merExpense" column="tmi_expense"/>
+            <result property="merCover" column="tmi_cover"/>
+            <result property="merStt" column="tmi_stt"/>
+        </collection>
+    </resultMap>
+
+    <select id="orderList" resultMap="orderResultMap">
+        SELECT tti_flow_id,
+               tti_user_id,
+               tti_stt,
+               tti_expense,
+               tti_addr_id,
+               tti_create_time,
+               tmi_mer_id,
+               tmi_trans_flow_id,
+               tmi_user_id,
+               tmi_name,
+               tmi_desc,
+               tmi_count,
+               tmi_expense,
+               tmi_stt,
+               tmi_cover
+        FROM trade_trans_info
+                 left join trade_mapping_info on tti_flow_id = tmi_trans_flow_id
+        where tti_user_id = #{userId}
+    </select>
+</mapper>
+

@@ -1,0 +1,32 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ynet.poc.mapper.CartMapper">
+    <resultMap id="cartMap" type="com.ynet.poc.entity.CartInfo">
+        <id column="tci_id" property="cartId"/>
+        <result column="tci_user_id" property="userId"/>
+        <result column="tci_mer_id" property="merId"/>
+        <result column="tci_count" property="merCount"/>
+        <result column="tci_create_time" property="createTime"/>
+        <result column="tri_expense" property="orderExpense"/>
+        <result column="tri_name" property="merName"/>
+        <result column="tri_desc" property="merDesc"/>
+        <result column="tri_cover" property="merCover"/>
+    </resultMap>
+
+    <select id="cartList" parameterType="java.lang.Integer" resultMap="cartMap">
+        SELECT tci_id,
+               tci_user_id,
+               tci_mer_id,
+               tci_count,
+               tci_create_time,
+               tri_expense,
+               tri_name,
+               tri_desc,
+               tri_cover
+        FROM trade_cart_info
+                 LEFT JOIN trade_mer_info on tri_id = tci_mer_id
+        WHERE tci_user_id = #{userId}
+    </select>
+</mapper>
+

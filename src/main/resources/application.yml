@@ -1,0 +1,98 @@
+spring:
+  # Redis����
+  redis:
+    host: 47.106.150.191
+    port: 6379
+    password: ''
+    timeout: 10000
+    jedis:
+      pool:
+        max-idle: 20
+        min-idle: 5
+        max-active: 20
+        max-wait: 2
+    database: 0
+  jms:
+    pub-sub-domain: true
+  datasource:
+    username: leyu
+    password: Leyu86
+    url: jdbc:mysql://47.106.150.191/POC?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&autoReconnect=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall
+      connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'
+      stat-view-servlet:
+        url-pattern: /druid/*
+        allow: 127.0.0.1
+        deny:
+        reset-enable: false
+        login-username: admin
+        login-password: 123456
+        enabled: true
+      filter:
+        slf4j:
+          enabled: true
+          statement-create-after-log-enabled: true
+          statement-close-after-log-enabled: true
+          result-set-open-after-log-enabled: true
+          result-set-close-after-log-enabled: true
+
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.ynet.poc.entity
+  global-config:
+    db-config:
+      id-type: auto
+  type-handlers-package: com.leyu.handler.mybatis
+
+#阿里云OSS
+aliyun:
+  oss:
+    endpoint: http://oss-cn-hangzhou.aliyuncs.com
+    access-key-id: LTAItm2T0kWdfS2H
+    access-key-secret: X7VKT79W5ycelSPIb4EskwnskIqFsT
+    bucket-name: leyu86
+    fileHost: img
+  sms:
+    access-key-id: LTAItm2T0kWdfS2H
+    access-key-secret: X7VKT79W5ycelSPIb4EskwnskIqFsT
+    sign-name: 乐鱼微博
+    template-code: SMS_164666169
+
+
+rocketmq:
+  name-server: 47.106.150.191:9876
+  producer:
+    group: ynet
+
+server:
+  port: 8090
+
+ynet:
+  name: 易诚互动
+  sms:
+    max-time: 5
+  auth:
+    secret: 8f173b072791424f86f8ea54dc6dc64e
+    expire-time: 1
+
+

@@ -57,21 +57,6 @@ mybatis-plus:
       id-type: auto
   type-handlers-package: com.leyu.handler.mybatis
 
-#阿里云OSS
-aliyun:
-  oss:
-    endpoint: http://oss-cn-hangzhou.aliyuncs.com
-    access-key-id: LTAItm2T0kWdfS2H
-    access-key-secret: X7VKT79W5ycelSPIb4EskwnskIqFsT
-    bucket-name: leyu86
-    fileHost: img
-  sms:
-    access-key-id: LTAItm2T0kWdfS2H
-    access-key-secret: X7VKT79W5ycelSPIb4EskwnskIqFsT
-    sign-name: 乐鱼微博
-    template-code: SMS_164666169
-
-
 rocketmq:
   name-server: 47.106.150.191:9876
   producer:
